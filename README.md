@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/the-four-realms-quest.lovable.app
+**URL**: https://the-four-realms-quest.lovable.app
 
 ## How can I edit this code?
 
