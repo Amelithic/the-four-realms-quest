@@ -41,7 +41,7 @@ export default function AddTaskForm() {
           Add a task
         </Button>
       </DialogTrigger>
-      <DialogContent className="stone-texture border-border bg-card sm:max-w-md">
+      <DialogContent className="stone-texture border-border bg-card sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-heading text-xl tracking-wide text-primary-foreground">
             Forge a New Quest
