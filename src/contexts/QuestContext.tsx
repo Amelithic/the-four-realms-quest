@@ -49,6 +49,7 @@ function getLevel(xp: number) {
 }
 
 const STORAGE_KEY = "four-realms-quest-progress";
+const CUSTOM_QUESTS_KEY = "four-realms-custom-quests";
 
 function saveProgress(data: QuestData) {
   const completed = [
@@ -66,6 +67,46 @@ function loadProgress(): Set<string> {
     if (raw) return new Set(JSON.parse(raw) as string[]);
   } catch {}
   return new Set();
+}
+
+interface CustomQuest {
+  realm: keyof QuestData["realms"] | "boss";
+  quest: Quest;
+}
+
+function saveCustomQuests(quests: CustomQuest[]) {
+  localStorage.setItem(CUSTOM_QUESTS_KEY, JSON.stringify(quests));
+}
+
+function loadCustomQuests(): CustomQuest[] {
+  try {
+    const raw = localStorage.getItem(CUSTOM_QUESTS_KEY);
+    if (raw) return JSON.parse(raw) as CustomQuest[];
+  } catch {}
+  return [];
+}
+
+function applyCustomQuests(data: QuestData, custom: CustomQuest[]): QuestData {
+  const result = { ...data, realms: { ...data.realms }, bossFights: [...data.bossFights] };
+  for (const c of custom) {
+    if (c.realm === "boss") {
+      result.bossFights = [...result.bossFights, c.quest];
+    } else {
+      result.realms = { ...result.realms, [c.realm]: [...result.realms[c.realm], c.quest] };
+    }
+  }
+  return result;
+}
+
+function getNextId(data: QuestData): number {
+  const allIds = [
+    ...Object.values(data.realms).flat(),
+    ...data.bossFights,
+  ].map((q) => {
+    const num = parseInt(q.id.replace(/\D/g, ""), 10);
+    return isNaN(num) ? 0 : num;
+  });
+  return Math.max(0, ...allIds) + 1;
 }
 
 function applyProgress(data: QuestData, completed: Set<string>): QuestData {
