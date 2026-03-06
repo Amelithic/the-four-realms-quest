@@ -1,31 +1,152 @@
 {
   "realms": {
     "os": [
-      { "id": "os-1", "description": "Review scheduling algorithms", "xp": 10, "completed": false },
-      { "id": "os-2", "description": "Draw a diagram of memory paging", "xp": 5, "completed": false },
-      { "id": "os-3", "description": "Compare monolithic vs microkernel architectures", "xp": 10, "completed": false },
-      { "id": "os-4", "description": "Study process synchronisation primitives", "xp": 15, "completed": false }
+      { "id": "os-1",  "description": "Define the role of the OS",                     "xp": 5,  "completed": false },
+      { "id": "os-2",  "description": "Study OS resource management",                 "xp": 5, "completed": false },
+      { "id": "os-3",  "description": "Review user–kernel mode transitions",          "xp": 10, "completed": false },
+      { "id": "os-4",  "description": "Understand the interrupt cycle",               "xp": 15, "completed": false },
+      { "id": "os-5",  "description": "Compare kernel architectures",                 "xp": 10, "completed": false },
+      { "id": "os-6",  "description": "Review system call categories",                "xp": 10, "completed": false },
+      { "id": "os-7",  "description": "Contrast API vs ABI",                          "xp": 5,  "completed": false },
+      { "id": "os-36", "description": "Compare monolithic vs microkernel architectures", "xp": 10, "completed": false },
+
+      { "id": "os-8",  "description": "Review the process model",                     "xp": 10, "completed": false },
+      { "id": "os-9",  "description": "Study PCB components",                         "xp": 15, "completed": false },
+      { "id": "os-10", "description": "Understand context switching",                 "xp": 15, "completed": false },
+      { "id": "os-11", "description": "Study process creation (fork/exec)",           "xp": 20, "completed": false },
+      { "id": "os-12", "description": "Compare IPC models",                           "xp": 10, "completed": false },
+      { "id": "os-13", "description": "Review multithreading benefits",               "xp": 10, "completed": false },
+      { "id": "os-14", "description": "Evaluate multithreading models",               "xp": 5, "completed": false },
+
+      { "id": "os-15", "description": "Assess scheduling criteria",                   "xp": 5, "completed": false },
+      { "id": "os-16", "description": "Review scheduling algorithms",                 "xp": 15, "completed": false },
+      { "id": "os-17", "description": "Compare preemptive vs non-preemptive scheduling", "xp": 5, "completed": false },
+      { "id": "os-18", "description": "Study multiprocessor scheduling",              "xp": 15, "completed": false },
+
+      { "id": "os-19", "description": "Understand the critical-section problem",      "xp": 10, "completed": false },
+      { "id": "os-20", "description": "Study synchronisation primitives",             "xp": 15, "completed": false },
+      { "id": "os-21", "description": "Review deadlock conditions",                   "xp": 10, "completed": false },
+      { "id": "os-22", "description": "Study deadlock avoidance techniques",          "xp": 15, "completed": false },
+
+      { "id": "os-23", "description": "Review hardware protection",                   "xp": 10, "completed": false },
+      { "id": "os-24", "description": "Study paging and the TLB",                     "xp": 15, "completed": false },
+      { "id": "os-25", "description": "Understand demand paging",                     "xp": 15, "completed": false },
+      { "id": "os-26", "description": "Compare page-replacement algorithms",          "xp": 10, "completed": false },
+      { "id": "os-27", "description": "Study kernel memory allocation",               "xp": 10, "completed": false },
+
+      { "id": "os-28", "description": "Study virtual memory concepts",                "xp": 10, "completed": false },
+      { "id": "os-29", "description": "Review file system structures",                "xp": 10, "completed": false },
+      { "id": "os-30", "description": "Study disk scheduling algorithms",             "xp": 10, "completed": false },
+      { "id": "os-31", "description": "Study I/O subsystem design",                   "xp": 10, "completed": false },
+      { "id": "os-32", "description": "Review security and protection models",        "xp": 10, "completed": false },
+      { "id": "os-33", "description": "Study OS boot sequence",                       "xp": 5,  "completed": false },
+      { "id": "os-34", "description": "Review performance measurement tools",         "xp": 5,  "completed": false },
+      { "id": "os-35", "description": "Study modern OS case studies",                 "xp": 10, "completed": false }
     ],
     "threejs": [
-      { "id": "three-1", "description": "Create a spinning cube with lighting", "xp": 15, "completed": false },
-      { "id": "three-2", "description": "Add orbit controls to a scene", "xp": 10, "completed": false },
-      { "id": "three-3", "description": "Render a textured sphere", "xp": 10, "completed": false }
+      { "id": "three-1",  "description": "Create a spinning cube with lighting",        "xp": 15, "completed": false },
+      { "id": "three-2",  "description": "Add controls to a scene",                     "xp": 10, "completed": false },
+      { "id": "three-3",  "description": "Render a textured sphere",                    "xp": 10, "completed": false },
+
+      { "id": "three-4",  "description": "Load a 3D model into a scene",                "xp": 15, "completed": false },
+      { "id": "three-5",  "description": "Animate an object along a path",              "xp": 10, "completed": false },
+      { "id": "three-6",  "description": "Create a starfield background",               "xp": 10, "completed": false },
+      { "id": "three-7",  "description": "Use different material types",                "xp": 5, "completed": false },
+      { "id": "three-8",  "description": "Add directional and ambient lighting",        "xp": 10, "completed": false },
+      { "id": "three-9",  "description": "Implement basic camera movement",             "xp": 10, "completed": false },
+      { "id": "three-10", "description": "Create a simple satellite orbit animation",   "xp": 15, "completed": false },
+      { "id": "three-11", "description": "Render Earth with a texture and atmosphere",  "xp": 15, "completed": false },
+      { "id": "three-12", "description": "Add raycasting for object selection",         "xp": 15, "completed": false },
+      { "id": "three-13", "description": "Use shaders with a basic custom fragment",    "xp": 20, "completed": false },
+      { "id": "three-14", "description": "Display real-time stats with Stats.js",       "xp": 5,  "completed": false },
+      { "id": "three-15", "description": "Organise a scene with groups and hierarchy",  "xp": 10, "completed": false }
     ],
     "dsa": [
       { "id": "dsa-1", "description": "Solve one easy array problem", "xp": 10, "completed": false },
       { "id": "dsa-2", "description": "Implement a linked list from scratch", "xp": 15, "completed": false },
       { "id": "dsa-3", "description": "Practice binary search variations", "xp": 10, "completed": false },
-      { "id": "dsa-4", "description": "Study BFS and DFS traversals", "xp": 10, "completed": false }
+      { "id": "dsa-4", "description": "Study BFS and DFS traversals", "xp": 10, "completed": false },
+      
+      { "id": "dsa-5",  "description": "Implement bubble sort and selection sort",    "xp": 10, "completed": false },
+      { "id": "dsa-6",  "description": "Implement merge sort",                        "xp": 15, "completed": false },
+      { "id": "dsa-7",  "description": "Implement quicksort",                         "xp": 15, "completed": false },
+      { "id": "dsa-8",  "description": "Compare sorting algorithm complexities",      "xp": 20, "completed": false },
+
+      { "id": "dsa-9",  "description": "Solve a two-pointer array problem",           "xp": 10, "completed": false },
+      { "id": "dsa-10", "description": "Solve a sliding window problem",              "xp": 10, "completed": false },
+      { "id": "dsa-11", "description": "Practice hash map problems",                  "xp": 10, "completed": false },
+      { "id": "dsa-12", "description": "Solve a stack-based problem",                 "xp": 10, "completed": false },
+
+      { "id": "dsa-13", "description": "Implement a queue using two stacks",          "xp": 10, "completed": false },
+      { "id": "dsa-14", "description": "Implement a binary tree and traverse it",     "xp": 15, "completed": false },
+      { "id": "dsa-15", "description": "Solve a basic recursion problem",             "xp": 10, "completed": false },
+      { "id": "dsa-16", "description": "Study time and space complexity basics",      "xp": 5,  "completed": false },
+
+      { "id": "dsa-17", "description": "Solve a simple dynamic programming problem",  "xp": 15, "completed": false },
+      { "id": "dsa-18", "description": "Practice common LeetCode patterns",           "xp": 10, "completed": false },
+      { "id": "dsa-19", "description": "Review greedy algorithm examples",            "xp": 10, "completed": false },
+      { "id": "dsa-20", "description": "Solve a graph shortest-path problem",         "xp": 15, "completed": false }
     ],
     "space": [
-      { "id": "space-1", "description": "Watch a video on satellite orbits", "xp": 5, "completed": false },
-      { "id": "space-2", "description": "Read about Lagrange points", "xp": 10, "completed": false },
-      { "id": "space-3", "description": "Explore the Hubble Deep Field image", "xp": 5, "completed": false }
+      { "id": "space-1",  "description": "Watch a video on satellite orbits",                     "xp": 5,  "completed": false },
+      { "id": "space-2",  "description": "Read about Lagrange points",                           "xp": 10, "completed": false },
+      { "id": "space-3",  "description": "Watch a long-form deep dive on a related topic",        "xp": 10, "completed": false },
+      { "id": "space-4",  "description": "Explore the Hubble Deep Field image",                   "xp": 5,  "completed": false },
+
+      { "id": "space-5",  "description": "Watch an intro to Earth-centered coordinate systems",   "xp": 15, "completed": false },
+      { "id": "space-6",  "description": "Learn the difference between ECI and ECEF frames",      "xp": 10, "completed": false },
+      { "id": "space-7",  "description": "Watch a video on Kepler’s laws",                        "xp": 5,  "completed": false },
+      { "id": "space-8",  "description": "Explore common satellite orbit types",                  "xp": 5,  "completed": false },
+      { "id": "space-9",  "description": "Read about ground tracks and coverage",                 "xp": 10, "completed": false },
+      { "id": "space-10", "description": "Watch a demo of TLE orbital prediction",                "xp": 10, "completed": false },
+      { "id": "space-11", "description": "Learn how satellites communicate with ground stations", "xp": 10, "completed": false },
+      { "id": "space-12", "description": "Watch a video on radio frequency bands in space",       "xp": 5,  "completed": false },
+      { "id": "space-13", "description": "Explore how GPS satellites maintain timing accuracy",   "xp": 15, "completed": false },
+      { "id": "space-14", "description": "Read about satellite attitude control systems",         "xp": 10, "completed": false },
+      { "id": "space-15", "description": "Watch a simulation of orbital decay and drag",          "xp": 5,  "completed": false },
+      { "id": "space-16", "description": "Learn how space debris is tracked",                     "xp": 10, "completed": false },
+      { "id": "space-17", "description": "Explore how constellations like Starlink operate",      "xp": 15, "completed": false },
+      { "id": "space-18", "description": "Watch a video on satellite power systems",              "xp": 5,  "completed": false },
+    
+      { "id": "space-19", "description": "Watch an intro to optical satellite communications",          "xp": 20, "completed": false },
+      { "id": "space-20", "description": "Learn how laser inter-satellite links work",                  "xp": 15, "completed": false },
+      { "id": "space-21", "description": "Explore the basics of photonic communication systems",        "xp": 10, "completed": false },
+      { "id": "space-22", "description": "Watch a demo of free-space optical communication",            "xp": 5,  "completed": false },
+      { "id": "space-23", "description": "Read about atmospheric effects on laser links",               "xp": 10, "completed": false },
+      { "id": "space-24", "description": "Learn how optical terminals track and point lasers",          "xp": 10, "completed": false },
+      { "id": "space-25", "description": "Explore quantum communication concepts in space",             "xp": 10, "completed": false },
+      { "id": "space-26", "description": "Watch a video on deep-space laser communication missions",    "xp": 10, "completed": false }
     ]
   },
   "bossFights": [
-    { "id": "boss-1", "description": "Solve a medium LeetCode problem", "xp": 25, "completed": false },
-    { "id": "boss-2", "description": "Build a small interactive Three.js scene", "xp": 30, "completed": false },
-    { "id": "boss-3", "description": "Implement a virtual memory simulator", "xp": 35, "completed": false }
+    { "id": "boss-1",  "description": "Solve a medium LeetCode problem",                               "xp": 25, "completed": false },
+    { "id": "boss-2",  "description": "Build a small interactive Three.js scene",                     "xp": 30, "completed": false },
+    { "id": "boss-3",  "description": "Implement a virtual memory simulator",                         "xp": 45, "completed": false },
+
+    { "id": "boss-4",  "description": "Solve a medium-hard LeetCode array problem",               "xp": 25, "completed": false },
+    { "id": "boss-5",  "description": "Implement a basic file system tree structure",             "xp": 30, "completed": false },
+    { "id": "boss-6",  "description": "Create a visual demo of binary search in Three.js",        "xp": 30, "completed": false },
+    { "id": "boss-7",  "description": "Simulate Round-Robin scheduling with a queue",             "xp": 25, "completed": false },
+    { "id": "boss-8",  "description": "Implement LRU cache from scratch",                         "xp": 30, "completed": false },
+    { "id": "boss-9",  "description": "Solve a graph traversal problem with BFS/DFS",             "xp": 25, "completed": false },
+    { "id": "boss-10", "description": "Animate a sorting algorithm in Three.js",                  "xp": 30, "completed": false },
+    { "id": "boss-11", "description": "Implement a simple page replacement algorithm",            "xp": 30, "completed": false },
+    { "id": "boss-12", "description": "Solve a medium dynamic programming problem",               "xp": 30, "completed": false },
+    { "id": "boss-13", "description": "Render a basic orbit path using simple physics",           "xp": 30, "completed": false },
+    { "id": "boss-14", "description": "Build a small CLI tool to parse and display TLE data",     "xp": 25, "completed": false },
+    { "id": "boss-15", "description": "Implement a thread pool with a task queue",                "xp": 35, "completed": false },
+
+    { "id": "boss-16",  "description": "Visualise an orbit path in Three.js using real TLE data",      "xp": 70, "completed": false },
+    { "id": "boss-17",  "description": "Simulate a scheduler using multiple algorithms",               "xp": 65, "completed": false },
+    { "id": "boss-18",  "description": "Implement Dijkstra’s algorithm and animate it in 3D",          "xp": 50, "completed": false },
+    { "id": "boss-19",  "description": "Render Earth with satellite ground tracks in Three.js",        "xp": 65, "completed": false },
+    { "id": "boss-20",  "description": "Build a deadlock visualiser for resource allocation",          "xp": 35, "completed": false },
+    { "id": "boss-21",  "description": "Create a paging and TLB hit/miss animation",                   "xp": 50, "completed": false },
+    { "id": "boss-22", "description": "Solve a hard array or graph problem",                          "xp": 30, "completed": false },
+    { "id": "boss-23", "description": "Research how to create a basic optical link",                  "xp": 35, "completed": false },
+    { "id": "boss-24", "description": "Model satellite attitude changes with quaternions in 3D",      "xp": 75, "completed": false },
+    { "id": "boss-25", "description": "Build a small OS-like process manager simulation",             "xp": 80, "completed": false },
+    { "id": "boss-26", "description": "Create a Three.js UI to inspect algorithm performance",        "xp": 55, "completed": false },
+    { "id": "boss-27", "description": "Combine ECI/ECEF transforms with a 3D satellite model",        "xp": 95, "completed": false }
   ]
 }
