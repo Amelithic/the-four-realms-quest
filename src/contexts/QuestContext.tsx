@@ -133,8 +133,10 @@ export function QuestProvider({ children }: { children: ReactNode }) {
     fetch("/quests.json")
       .then((r) => r.json())
       .then((d: QuestData) => {
+        const custom = loadCustomQuests();
+        const withCustom = custom.length > 0 ? applyCustomQuests(d, custom) : d;
         const saved = loadProgress();
-        setData(saved.size > 0 ? applyProgress(d, saved) : d);
+        setData(saved.size > 0 ? applyProgress(withCustom, saved) : withCustom);
       });
   }, []);
 
