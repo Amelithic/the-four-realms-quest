@@ -188,6 +188,28 @@ export function QuestProvider({ children }: { children: ReactNode }) {
 
   const clearLevelUp = useCallback(() => setJustLevelledUp(false), []);
 
+  const addQuest = useCallback(
+    (realm: keyof QuestData["realms"] | "boss", description: string, xp: number) => {
+      if (!data) return;
+      const nextId = getNextId(data);
+      const prefix = realm === "boss" ? "boss" : realm;
+      const newQuest: Quest = { id: `${prefix}-${nextId}`, description, xp, completed: false };
+
+      const custom = loadCustomQuests();
+      custom.push({ realm, quest: newQuest });
+      saveCustomQuests(custom);
+
+      const newData = { ...data, realms: { ...data.realms }, bossFights: [...data.bossFights] };
+      if (realm === "boss") {
+        newData.bossFights = [...newData.bossFights, newQuest];
+      } else {
+        newData.realms = { ...newData.realms, [realm]: [...newData.realms[realm], newQuest] };
+      }
+      setData(newData);
+    },
+    [data]
+  );
+
   return (
     <QuestContext.Provider
       value={{
@@ -197,6 +219,7 @@ export function QuestProvider({ children }: { children: ReactNode }) {
         xpForCurrentLevel,
         xpForNextLevel,
         completeQuest,
+        addQuest,
         justLevelledUp,
         clearLevelUp,
         lastCompleted,
