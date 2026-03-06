@@ -1,0 +1,31 @@
+{
+  "realms": {
+    "os": [
+      { "id": "os-1", "description": "Review scheduling algorithms", "xp": 10, "completed": false },
+      { "id": "os-2", "description": "Draw a diagram of memory paging", "xp": 5, "completed": false },
+      { "id": "os-3", "description": "Compare monolithic vs microkernel architectures", "xp": 10, "completed": false },
+      { "id": "os-4", "description": "Study process synchronisation primitives", "xp": 15, "completed": false }
+    ],
+    "threejs": [
+      { "id": "three-1", "description": "Create a spinning cube with lighting", "xp": 15, "completed": false },
+      { "id": "three-2", "description": "Add orbit controls to a scene", "xp": 10, "completed": false },
+      { "id": "three-3", "description": "Render a textured sphere", "xp": 10, "completed": false }
+    ],
+    "dsa": [
+      { "id": "dsa-1", "description": "Solve one easy array problem", "xp": 10, "completed": false },
+      { "id": "dsa-2", "description": "Implement a linked list from scratch", "xp": 15, "completed": false },
+      { "id": "dsa-3", "description": "Practice binary search variations", "xp": 10, "completed": false },
+      { "id": "dsa-4", "description": "Study BFS and DFS traversals", "xp": 10, "completed": false }
+    ],
+    "space": [
+      { "id": "space-1", "description": "Watch a video on satellite orbits", "xp": 5, "completed": false },
+      { "id": "space-2", "description": "Read about Lagrange points", "xp": 10, "completed": false },
+      { "id": "space-3", "description": "Explore the Hubble Deep Field image", "xp": 5, "completed": false }
+    ]
+  },
+  "bossFights": [
+    { "id": "boss-1", "description": "Solve a medium LeetCode problem", "xp": 25, "completed": false },
+    { "id": "boss-2", "description": "Build a small interactive Three.js scene", "xp": 30, "completed": false },
+    { "id": "boss-3", "description": "Implement a virtual memory simulator", "xp": 35, "completed": false }
+  ]
+}
