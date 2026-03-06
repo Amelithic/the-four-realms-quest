@@ -17,7 +17,7 @@ export interface QuestData {
   bossFights: Quest[];
 }
 
-const LEVEL_THRESHOLDS = [0, 20, 50, 90, 140, 200, 270, 350, 440, 540, 660, 780, 910, 1080, 1200, 1420, 1670, 1800, 2000];
+const LEVEL_THRESHOLDS = [0, 20, 50, 90, 140, 200, 270, 350, 440, 540, 660, 780, 910, 1080, 1200, 1420, 1670, 1800, 2000, 2500];
 
 interface QuestContextType {
   data: QuestData | null;
