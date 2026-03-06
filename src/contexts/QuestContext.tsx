@@ -47,6 +47,40 @@ function getLevel(xp: number) {
   return 1;
 }
 
+const STORAGE_KEY = "four-realms-quest-progress";
+
+function saveProgress(data: QuestData) {
+  const completed = [
+    ...Object.values(data.realms).flat(),
+    ...data.bossFights,
+  ]
+    .filter((q) => q.completed)
+    .map((q) => q.id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
+}
+
+function loadProgress(): Set<string> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return new Set(JSON.parse(raw) as string[]);
+  } catch {}
+  return new Set();
+}
+
+function applyProgress(data: QuestData, completed: Set<string>): QuestData {
+  const mark = (quests: Quest[]) =>
+    quests.map((q) => (completed.has(q.id) ? { ...q, completed: true } : q));
+  return {
+    realms: {
+      os: mark(data.realms.os),
+      threejs: mark(data.realms.threejs),
+      dsa: mark(data.realms.dsa),
+      space: mark(data.realms.space),
+    },
+    bossFights: mark(data.bossFights),
+  };
+}
+
 export function QuestProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<QuestData | null>(null);
   const [justLevelledUp, setJustLevelledUp] = useState(false);
@@ -56,7 +90,10 @@ export function QuestProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     fetch("/quests.json")
       .then((r) => r.json())
-      .then((d: QuestData) => setData(d));
+      .then((d: QuestData) => {
+        const saved = loadProgress();
+        setData(saved.size > 0 ? applyProgress(d, saved) : d);
+      });
   }, []);
 
   const allQuests = data
@@ -86,6 +123,7 @@ export function QuestProvider({ children }: { children: ReactNode }) {
         bossFights: update(data.bossFights),
       };
       setData(newData);
+      saveProgress(newData);
 
       const newAllQuests = [...Object.values(newData.realms).flat(), ...newData.bossFights];
       const newXp = newAllQuests.filter((q) => q.completed).reduce((s, q) => s + q.xp, 0);
