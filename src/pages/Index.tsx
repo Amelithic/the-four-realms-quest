@@ -25,7 +25,7 @@ function QuestApp() {
     <div className="relative min-h-screen">
       {/* Background image */}
       <div
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25"
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-75"
         style={{ backgroundImage: `url(${bgRealm})` }}
       />
       <div className="fixed inset-0 z-0 bg-background/40" />
