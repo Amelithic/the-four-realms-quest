@@ -4,6 +4,7 @@ import bgRealm from "@/assets/bg-realm.jpg";
 import RealmSection from "@/components/RealmSection";
 import BossFightSection from "@/components/BossFightSection";
 import FatesChoice from "@/components/FatesChoice";
+import AddTaskForm from "@/components/AddTaskForm";
 import DustParticles from "@/components/DustParticles";
 import TorchGlow from "@/components/TorchGlow";
 
