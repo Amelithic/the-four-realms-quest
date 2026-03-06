@@ -58,6 +58,11 @@ function QuestApp() {
         {/* Boss Fights */}
         <BossFightSection bosses={data.bossFights} />
 
+        {/* Add Task */}
+        <div className="flex justify-center mt-8">
+          <AddTaskForm />
+        </div>
+
         {/* Footer */}
         <footer className="text-center mt-12 pb-8">
           <p className="font-body text-sm text-muted-foreground">
