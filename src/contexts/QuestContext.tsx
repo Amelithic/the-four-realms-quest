@@ -26,6 +26,7 @@ interface QuestContextType {
   xpForCurrentLevel: number;
   xpForNextLevel: number;
   completeQuest: (id: string) => void;
+  addQuest: (realm: keyof QuestData["realms"] | "boss", description: string, xp: number) => void;
   justLevelledUp: boolean;
   clearLevelUp: () => void;
   lastCompleted: string | null;
@@ -48,6 +49,7 @@ function getLevel(xp: number) {
 }
 
 const STORAGE_KEY = "four-realms-quest-progress";
+const CUSTOM_QUESTS_KEY = "four-realms-custom-quests";
 
 function saveProgress(data: QuestData) {
   const completed = [
@@ -65,6 +67,46 @@ function loadProgress(): Set<string> {
     if (raw) return new Set(JSON.parse(raw) as string[]);
   } catch {}
   return new Set();
+}
+
+interface CustomQuest {
+  realm: keyof QuestData["realms"] | "boss";
+  quest: Quest;
+}
+
+function saveCustomQuests(quests: CustomQuest[]) {
+  localStorage.setItem(CUSTOM_QUESTS_KEY, JSON.stringify(quests));
+}
+
+function loadCustomQuests(): CustomQuest[] {
+  try {
+    const raw = localStorage.getItem(CUSTOM_QUESTS_KEY);
+    if (raw) return JSON.parse(raw) as CustomQuest[];
+  } catch {}
+  return [];
+}
+
+function applyCustomQuests(data: QuestData, custom: CustomQuest[]): QuestData {
+  const result = { ...data, realms: { ...data.realms }, bossFights: [...data.bossFights] };
+  for (const c of custom) {
+    if (c.realm === "boss") {
+      result.bossFights = [...result.bossFights, c.quest];
+    } else {
+      result.realms = { ...result.realms, [c.realm]: [...result.realms[c.realm], c.quest] };
+    }
+  }
+  return result;
+}
+
+function getNextId(data: QuestData): number {
+  const allIds = [
+    ...Object.values(data.realms).flat(),
+    ...data.bossFights,
+  ].map((q) => {
+    const num = parseInt(q.id.replace(/\D/g, ""), 10);
+    return isNaN(num) ? 0 : num;
+  });
+  return Math.max(0, ...allIds) + 1;
 }
 
 function applyProgress(data: QuestData, completed: Set<string>): QuestData {
@@ -91,8 +133,10 @@ export function QuestProvider({ children }: { children: ReactNode }) {
     fetch("/quests.json")
       .then((r) => r.json())
       .then((d: QuestData) => {
+        const custom = loadCustomQuests();
+        const withCustom = custom.length > 0 ? applyCustomQuests(d, custom) : d;
         const saved = loadProgress();
-        setData(saved.size > 0 ? applyProgress(d, saved) : d);
+        setData(saved.size > 0 ? applyProgress(withCustom, saved) : withCustom);
       });
   }, []);
 
@@ -144,6 +188,28 @@ export function QuestProvider({ children }: { children: ReactNode }) {
 
   const clearLevelUp = useCallback(() => setJustLevelledUp(false), []);
 
+  const addQuest = useCallback(
+    (realm: keyof QuestData["realms"] | "boss", description: string, xp: number) => {
+      if (!data) return;
+      const nextId = getNextId(data);
+      const prefix = realm === "boss" ? "boss" : realm;
+      const newQuest: Quest = { id: `${prefix}-${nextId}`, description, xp, completed: false };
+
+      const custom = loadCustomQuests();
+      custom.push({ realm, quest: newQuest });
+      saveCustomQuests(custom);
+
+      const newData = { ...data, realms: { ...data.realms }, bossFights: [...data.bossFights] };
+      if (realm === "boss") {
+        newData.bossFights = [...newData.bossFights, newQuest];
+      } else {
+        newData.realms = { ...newData.realms, [realm]: [...newData.realms[realm], newQuest] };
+      }
+      setData(newData);
+    },
+    [data]
+  );
+
   return (
     <QuestContext.Provider
       value={{
@@ -153,6 +219,7 @@ export function QuestProvider({ children }: { children: ReactNode }) {
         xpForCurrentLevel,
         xpForNextLevel,
         completeQuest,
+        addQuest,
         justLevelledUp,
         clearLevelUp,
         lastCompleted,

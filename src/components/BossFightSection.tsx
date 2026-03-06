@@ -1,10 +1,16 @@
+import { useState } from "react";
 import { Quest, useQuests } from "@/contexts/QuestContext";
 import { motion } from "framer-motion";
-import { Skull, Check } from "lucide-react";
+import { Skull, Check, ChevronDown, ChevronUp } from "lucide-react";
+
+const COLLAPSED_LIMIT = 5;
 
 export default function BossFightSection({ bosses }: { bosses: Quest[] }) {
   const { completeQuest, lastBossCompleted } = useQuests();
   const shaking = lastBossCompleted !== null;
+  const [expanded, setExpanded] = useState(false);
+  const canCollapse = bosses.length > COLLAPSED_LIMIT;
+  const visibleBosses = canCollapse && !expanded ? bosses.slice(0, COLLAPSED_LIMIT) : bosses;
 
   return (
     <motion.section
@@ -19,7 +25,7 @@ export default function BossFightSection({ bosses }: { bosses: Quest[] }) {
         <h2 className="font-heading text-xl tracking-wide text-destructive">Boss Fights</h2>
       </div>
       <div className="space-y-3">
-        {bosses.map((boss) => (
+        {visibleBosses.map((boss) => (
           <div
             key={boss.id}
             className={`relative flex items-center gap-3 px-4 py-4 rounded-md border-2 transition-all duration-300 ${
@@ -54,6 +60,18 @@ export default function BossFightSection({ bosses }: { bosses: Quest[] }) {
           </div>
         ))}
       </div>
+      {canCollapse && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-3 flex items-center gap-1 mx-auto font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {expanded ? (
+            <>Show less <ChevronUp className="w-4 h-4" /></>
+          ) : (
+            <>Show more ({bosses.length - COLLAPSED_LIMIT} remaining) <ChevronDown className="w-4 h-4" /></>
+          )}
+        </button>
+      )}
     </motion.section>
   );
 }

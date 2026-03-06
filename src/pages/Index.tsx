@@ -4,6 +4,7 @@ import bgRealm from "@/assets/bg-realm.jpg";
 import RealmSection from "@/components/RealmSection";
 import BossFightSection from "@/components/BossFightSection";
 import FatesChoice from "@/components/FatesChoice";
+import AddTaskForm from "@/components/AddTaskForm";
 import DustParticles from "@/components/DustParticles";
 import TorchGlow from "@/components/TorchGlow";
 
@@ -56,6 +57,11 @@ function QuestApp() {
 
         {/* Boss Fights */}
         <BossFightSection bosses={data.bossFights} />
+
+        {/* Add Task */}
+        <div className="flex justify-center mt-8">
+          <AddTaskForm />
+        </div>
 
         {/* Footer */}
         <footer className="text-center mt-12 pb-8">
