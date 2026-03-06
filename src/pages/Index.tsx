@@ -30,7 +30,6 @@ function QuestApp() {
       <div className="fixed inset-0 z-0 bg-background/40" />
       <TorchGlow />
       <DustParticles />
-      <XPBar />
 
       <main className="relative z-10 max-w-5xl mx-auto px-4 py-8">
         {/* Header */}
@@ -38,9 +37,10 @@ function QuestApp() {
           <h1 className="font-title text-4xl md:text-5xl tracking-wider text-foreground mb-2 animate-rune-pulse">
             The Four Realms Quest
           </h1>
-          <p className="font-body text-lg text-muted-foreground italic">
+          <p className="font-body text-lg text-muted-foreground italic mb-6">
             Your XP awakens the ancient runes.
           </p>
+          <XPBar />
           <div className="mt-6 flex justify-center">
             <FatesChoice />
           </div>
