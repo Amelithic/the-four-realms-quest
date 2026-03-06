@@ -1,5 +1,6 @@
 import { QuestProvider, useQuests } from "@/contexts/QuestContext";
 import XPBar from "@/components/XPBar";
+import bgRealm from "@/assets/bg-realm.jpg";
 import RealmSection from "@/components/RealmSection";
 import BossFightSection from "@/components/BossFightSection";
 import FatesChoice from "@/components/FatesChoice";
@@ -21,6 +22,12 @@ function QuestApp() {
 
   return (
     <div className="relative min-h-screen">
+      {/* Background image */}
+      <div
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${bgRealm})` }}
+      />
+      <div className="fixed inset-0 z-0 bg-background/70" />
       <TorchGlow />
       <DustParticles />
       <XPBar />
@@ -28,7 +35,7 @@ function QuestApp() {
       <main className="relative z-10 max-w-5xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="font-heading text-4xl md:text-5xl tracking-wider text-foreground mb-2">
+          <h1 className="font-title text-4xl md:text-5xl tracking-wider text-foreground mb-2 animate-rune-pulse">
             The Four Realms Quest
           </h1>
           <p className="font-body text-lg text-muted-foreground italic">
