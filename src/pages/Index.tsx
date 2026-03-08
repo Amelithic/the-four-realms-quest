@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { QuestProvider, useQuests } from "@/contexts/QuestContext";
 import XPBar from "@/components/XPBar";
 import bgRealm from "@/assets/bg-realm.jpg";
@@ -7,6 +8,44 @@ import FatesChoice from "@/components/FatesChoice";
 import AddTaskForm from "@/components/AddTaskForm";
 import DustParticles from "@/components/DustParticles";
 import TorchGlow from "@/components/TorchGlow";
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { RotateCcw } from "lucide-react";
+
+function ResetProgressButton() {
+  const { resetProgress } = useQuests();
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive hover:bg-destructive/10 gap-1.5 text-xs">
+          <RotateCcw className="w-3.5 h-3.5" />
+          Clear progress
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent className="border-destructive/50 bg-card">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="font-heading text-destructive">Do you want to reset all tasks?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This will mark all tasks as uncompleted and clear your XP. This action cannot be undone.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={resetProgress}
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+          >
+            Reset all
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
 
 function QuestApp() {
   const { data } = useQuests();
