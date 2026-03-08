@@ -27,6 +27,7 @@ interface QuestContextType {
   xpForNextLevel: number;
   completeQuest: (id: string) => void;
   addQuest: (realm: keyof QuestData["realms"] | "boss", description: string, xp: number) => void;
+  resetProgress: () => void;
   justLevelledUp: boolean;
   clearLevelUp: () => void;
   lastCompleted: string | null;
