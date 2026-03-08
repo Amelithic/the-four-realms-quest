@@ -27,6 +27,7 @@ interface QuestContextType {
   xpForNextLevel: number;
   completeQuest: (id: string) => void;
   addQuest: (realm: keyof QuestData["realms"] | "boss", description: string, xp: number) => void;
+  resetProgress: () => void;
   justLevelledUp: boolean;
   clearLevelUp: () => void;
   lastCompleted: string | null;
@@ -210,6 +211,23 @@ export function QuestProvider({ children }: { children: ReactNode }) {
     [data]
   );
 
+  const resetProgress = useCallback(() => {
+    if (!data) return;
+    const uncomplete = (quests: Quest[]) => quests.map((q) => ({ ...q, completed: false }));
+    const newData: QuestData = {
+      realms: {
+        os: uncomplete(data.realms.os),
+        threejs: uncomplete(data.realms.threejs),
+        dsa: uncomplete(data.realms.dsa),
+        space: uncomplete(data.realms.space),
+      },
+      bossFights: uncomplete(data.bossFights),
+    };
+    setData(newData);
+    localStorage.removeItem(STORAGE_KEY);
+    setJustLevelledUp(false);
+  }, [data]);
+
   return (
     <QuestContext.Provider
       value={{
@@ -220,6 +238,7 @@ export function QuestProvider({ children }: { children: ReactNode }) {
         xpForNextLevel,
         completeQuest,
         addQuest,
+        resetProgress,
         justLevelledUp,
         clearLevelUp,
         lastCompleted,
