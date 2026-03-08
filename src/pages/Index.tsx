@@ -64,10 +64,12 @@ function QuestApp() {
         </div>
 
         {/* Footer */}
-        <footer className="text-center mt-12 pb-8">
+        <footer className="mt-12 pb-8 flex items-center justify-between">
+          <div />
           <p className="font-body text-sm text-muted-foreground">
             ◆ Enter the Realms ◆
           </p>
+          <ResetProgressButton />
         </footer>
       </main>
     </div>
